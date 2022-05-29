@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.TimeUnit
 
 @Service
 class JdbcMetricsService(
@@ -16,7 +17,7 @@ class JdbcMetricsService(
 
     private val metricsMap = ConcurrentHashMap<String, Long>()
 
-    @Scheduled(fixedDelay = 60_000)
+    @Scheduled(fixedDelayString = "\${jdbc-metrics-exporter.refresh-seconds}", timeUnit = TimeUnit.SECONDS)
     fun exportMetrics() {
         jdbcMetricsConfig.metrics.forEach { metric ->
             metric.statementsBefore.forEach {

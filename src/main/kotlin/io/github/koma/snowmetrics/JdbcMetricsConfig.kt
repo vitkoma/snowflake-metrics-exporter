@@ -1,6 +1,5 @@
 package io.github.koma.snowmetrics
 
-import io.micrometer.core.instrument.Tags
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component
 

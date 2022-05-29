@@ -1,3 +1,6 @@
+jdbc-metrics-exporter:
+    refresh-seconds: 60
+
 spring.application:
     name: snowflake-metrics-exporter
 
