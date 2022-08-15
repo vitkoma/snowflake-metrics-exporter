@@ -9,13 +9,13 @@ buildscript {
 plugins {
     id("org.springframework.boot") version "2.6.7"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    id("com.google.cloud.tools.jib") version "3.2.1 "
+    id("com.google.cloud.tools.jib") version "3.2.1"
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
 }
 
 group = "io.github.koma"
-version = "0.0.1-SNAPSHOT"
+version = "0.1.1"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
@@ -36,6 +36,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("net.snowflake:snowflake-jdbc:3.13.18")
+    implementation("ch.qos.logback.contrib:logback-json-classic:0.1.5")
+    implementation("ch.qos.logback.contrib:logback-jackson:0.1.5")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
@@ -62,6 +64,7 @@ jib {
     container {
         ports = listOf("8080")
         extraClasspath = listOf("/config")
+        jvmFlags = listOf("--add-opens", "java.base/java.nio=ALL-UNNAMED")
     }
     pluginExtensions {
         pluginExtension {
