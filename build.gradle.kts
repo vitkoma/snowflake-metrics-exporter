@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "io.github.koma"
-version = "0.1.2"
+version = "0.1.3"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
@@ -38,7 +38,7 @@ dependencies {
     implementation("net.snowflake:snowflake-jdbc:3.13.18")
     implementation("ch.qos.logback.contrib:logback-json-classic:0.1.5")
     implementation("ch.qos.logback.contrib:logback-jackson:0.1.5")
-    compileOnly("org.projectlombok:lombok")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.1.20")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
